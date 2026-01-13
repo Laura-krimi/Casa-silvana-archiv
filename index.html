@@ -95,6 +95,12 @@ h2 {
     font-weight: bold;
 }
 
+.tipp-msg {
+    color: #4a2b35;
+    font-style: italic;
+    margin-bottom: 6px;
+}
+
 #audiobox {
     display: none;
     margin-top: 25px;
@@ -111,85 +117,111 @@ audio {
 <div id="container">
 <h2>◆ Casa Silvana – Archiv der Verhöre ◆</h2>
 
-<!-- Buttons + Passwortfelder direkt unter jedem Button -->
+<!-- Beatrice -->
 <div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'1_Verhoer_Beatrice.mp3','rose')">Verhör Beatrice</button>
+    <button class="verhoer-btn" onclick="startPasswort(this,'1_Verhoer_Beatrice.mp3','rose','Eine bekannte Rote Blume')">Verhör Beatrice</button>
     <div class="passwort-container">
+        <div class="tipp-msg"></div>
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
+        <br> <!-- Leerzeile für Abstand -->
     </div>
 </div>
 
+<!-- Charlotte -->
 <div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'2_Verhoer_Charlotte.mp3','perle')">Verhör Charlotte</button>
+    <button class="verhoer-btn" onclick="startPasswort(this,'2_Verhoer_Charlotte.mp3','perle','')">Verhör Charlotte</button>
     <div class="passwort-container">
+        <div class="tipp-msg"></div>
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
+        <br>
     </div>
 </div>
 
+<!-- Victoria -->
 <div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'3_Verhoer_Victoria.mp3','spiegel')">Verhör Victoria</button>
+    <button class="verhoer-btn" onclick="startPasswort(this,'3_Verhoer_Victoria.mp3','spiegel','')">Verhör Victoria</button>
     <div class="passwort-container">
+        <div class="tipp-msg"></div>
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
+        <br>
     </div>
 </div>
 
+<!-- Charles -->
 <div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'4_Verhoer_Charles.mp3','erbe')">Verhör Charles</button>
+    <button class="verhoer-btn" onclick="startPasswort(this,'4_Verhoer_Charles.mp3','erbe','')">Verhör Charles</button>
     <div class="passwort-container">
+        <div class="tipp-msg"></div>
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
+        <br>
     </div>
 </div>
 
+<!-- Victor -->
 <div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'5_Verhoer_Victor.mp3','schatten')">Verhör Victor</button>
+    <button class="verhoer-btn" onclick="startPasswort(this,'5_Verhoer_Victor.mp3','schatten','')">Verhör Victor</button>
     <div class="passwort-container">
+        <div class="tipp-msg"></div>
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
+        <br>
     </div>
 </div>
 
+<!-- Damian -->
 <div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'6_Verhoer_Damian.mp3','schluessel')">Verhör Damian</button>
+    <button class="verhoer-btn" onclick="startPasswort(this,'6_Verhoer_Damian.mp3','schluessel','')">Verhör Damian</button>
     <div class="passwort-container">
+        <div class="tipp-msg"></div>
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
+        <br>
     </div>
 </div>
 
+<!-- Olivia -->
 <div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'7_Verhoer_Olivia.mp3','garten')">Verhör Olivia</button>
+    <button class="verhoer-btn" onclick="startPasswort(this,'7_Verhoer_Olivia.mp3','garten','')">Verhör Olivia</button>
     <div class="passwort-container">
+        <div class="tipp-msg"></div>
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
+        <br>
     </div>
 </div>
 
+<!-- Frederick -->
 <div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'8_Verhoer_Frederick.mp3','vertrag')">Verhör Frederick</button>
+    <button class="verhoer-btn" onclick="startPasswort(this,'8_Verhoer_Frederick.mp3','vertrag','')">Verhör Frederick</button>
     <div class="passwort-container">
+        <div class="tipp-msg"></div>
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
+        <br>
     </div>
 </div>
 
+<!-- Alfred -->
 <div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'9_Verhoer_Alfred.mp3','uhrwerk')">Verhör Alfred</button>
+    <button class="verhoer-btn" onclick="startPasswort(this,'9_Verhoer_Alfred.mp3','uhrwerk','')">Verhör Alfred</button>
     <div class="passwort-container">
+        <div class="tipp-msg"></div>
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
+        <br>
     </div>
 </div>
 
@@ -204,14 +236,18 @@ audio {
 let aktivePasswortContainer = null;
 let aktuelleDatei = "";
 let aktuellesPasswort = "";
+let aktuellerTipp = "";
 
-function startPasswort(button, datei, passwort) {
+function startPasswort(button, datei, passwort, tipp) {
     // alle offenen Passwort-Container schließen
     document.querySelectorAll('.passwort-container').forEach(pc => pc.style.display = 'none');
 
     // aktuellen Container öffnen
     const container = button.nextElementSibling;
     container.style.display = 'block';
+
+    // Tipp anzeigen
+    container.querySelector('.tipp-msg').innerText = tipp;
 
     // speichern für checkPasswort
     aktivePasswortContainer = container;
