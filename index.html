@@ -71,6 +71,7 @@ audio {
 <div id="container">
 <h2>◆ Casa Silvana – Archiv der Verhöre ◆</h2>
 
+<!-- Buttons für Verhöre -->
 <button class="verhoer-btn" onclick="zugang('1_Verhoer_Beatrice.mp3','rose')">Verhör Beatrice</button>
 <button class="verhoer-btn" onclick="zugang('2_Verhoer_Charlotte.mp3','perle')">Verhör Charlotte</button>
 <button class="verhoer-btn" onclick="zugang('3_Verhoer_Victoria.mp3','spiegel')">Verhör Victoria</button>
@@ -81,6 +82,7 @@ audio {
 <button class="verhoer-btn" onclick="zugang('8_Verhoer_Frederick.mp3','vertrag')">Verhör Frederick</button>
 <button class="verhoer-btn" onclick="zugang('9_Verhoer_Alfred.mp3','uhrwerk')">Verhör Alfred</button>
 
+<!-- Audioplayer -->
 <div id="audiobox">
     <audio id="player" controls></audio>
 </div>
@@ -88,10 +90,11 @@ audio {
 </div>
 
 <script>
+// Funktion für Passwort-Abfrage
 function zugang(datei, richtigesPasswort) {
     const eingabe = prompt("🔑 Bitte Passwort für dieses Verhör eingeben:");
 
-    if (eingabe === null) return;
+    if (eingabe === null) return; // Abbrechen
 
     if (eingabe === richtigesPasswort) {
         document.getElementById("audiobox").style.display = "block";
