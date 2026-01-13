@@ -35,7 +35,7 @@ h2 {
 .verhoer-btn {
     width: 100%;
     padding: 14px 18px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     font-size: 17px;
     background: linear-gradient(135deg, #e8a7c1, #f3c1d4);
     border: 1px solid #d4af37;
@@ -44,6 +44,7 @@ h2 {
     cursor: pointer;
     transition: 0.3s;
     text-align: left;
+    position: relative;
 }
 
 .verhoer-btn::before {
@@ -55,17 +56,16 @@ h2 {
     transform: translateY(-2px);
 }
 
-/* Passwort-Box */
-#passwortContainer {
+.passwort-container {
     display: none;
-    margin-top: 20px;
-    padding: 20px;
+    margin-top: 8px;
+    padding: 15px;
     border: 2px solid #d4af37;
     border-radius: 10px;
     background: #fde4ec;
 }
 
-#passwortContainer input[type="password"] {
+.passwort-container input[type="password"] {
     width: calc(100% - 120px);
     padding: 10px;
     font-size: 16px;
@@ -74,7 +74,7 @@ h2 {
     margin-right: 10px;
 }
 
-#passwortContainer button {
+.passwort-container button {
     padding: 10px 15px;
     font-size: 16px;
     background: #e29ab5;
@@ -85,13 +85,13 @@ h2 {
     transition: 0.3s;
 }
 
-#passwortContainer button:hover {
+.passwort-container button:hover {
     background: #d77fa2;
 }
 
-#errorMsg {
+.error-msg {
     color: #c33;
-    margin-top: 10px;
+    margin-top: 8px;
     font-weight: bold;
 }
 
@@ -111,23 +111,86 @@ audio {
 <div id="container">
 <h2>◆ Casa Silvana – Archiv der Verhöre ◆</h2>
 
-<!-- Buttons für Verhöre -->
-<button class="verhoer-btn" onclick="startPasswort('1_Verhoer_Beatrice.mp3','rose')">Verhör Beatrice</button>
-<button class="verhoer-btn" onclick="startPasswort('2_Verhoer_Charlotte.mp3','perle')">Verhör Charlotte</button>
-<button class="verhoer-btn" onclick="startPasswort('3_Verhoer_Victoria.mp3','spiegel')">Verhör Victoria</button>
-<button class="verhoer-btn" onclick="startPasswort('4_Verhoer_Charles.mp3','erbe')">Verhör Charles</button>
-<button class="verhoer-btn" onclick="startPasswort('5_Verhoer_Victor.mp3','schatten')">Verhör Victor</button>
-<button class="verhoer-btn" onclick="startPasswort('6_Verhoer_Damian.mp3','schluessel')">Verhör Damian</button>
-<button class="verhoer-btn" onclick="startPasswort('7_Verhoer_Olivia.mp3','garten')">Verhör Olivia</button>
-<button class="verhoer-btn" onclick="startPasswort('8_Verhoer_Frederick.mp3','vertrag')">Verhör Frederick</button>
-<button class="verhoer-btn" onclick="startPasswort('9_Verhoer_Alfred.mp3','uhrwerk')">Verhör Alfred</button>
+<!-- Buttons + Passwortfelder direkt unter jedem Button -->
+<div class="verhoer-block">
+    <button class="verhoer-btn" onclick="startPasswort(this,'1_Verhoer_Beatrice.mp3','rose')">Verhör Beatrice</button>
+    <div class="passwort-container">
+        <input type="password" placeholder="Passwort">
+        <button onclick="checkPasswort(this)">Entsperren</button>
+        <div class="error-msg"></div>
+    </div>
+</div>
 
-<!-- Passwort-Eingabe -->
-<div id="passwortContainer">
-    <label>🔑 Passwort eingeben:</label><br><br>
-    <input type="password" id="passwortInput" placeholder="Passwort">
-    <button onclick="checkPasswort()">Entsperren</button>
-    <div id="errorMsg"></div>
+<div class="verhoer-block">
+    <button class="verhoer-btn" onclick="startPasswort(this,'2_Verhoer_Charlotte.mp3','perle')">Verhör Charlotte</button>
+    <div class="passwort-container">
+        <input type="password" placeholder="Passwort">
+        <button onclick="checkPasswort(this)">Entsperren</button>
+        <div class="error-msg"></div>
+    </div>
+</div>
+
+<div class="verhoer-block">
+    <button class="verhoer-btn" onclick="startPasswort(this,'3_Verhoer_Victoria.mp3','spiegel')">Verhör Victoria</button>
+    <div class="passwort-container">
+        <input type="password" placeholder="Passwort">
+        <button onclick="checkPasswort(this)">Entsperren</button>
+        <div class="error-msg"></div>
+    </div>
+</div>
+
+<div class="verhoer-block">
+    <button class="verhoer-btn" onclick="startPasswort(this,'4_Verhoer_Charles.mp3','erbe')">Verhör Charles</button>
+    <div class="passwort-container">
+        <input type="password" placeholder="Passwort">
+        <button onclick="checkPasswort(this)">Entsperren</button>
+        <div class="error-msg"></div>
+    </div>
+</div>
+
+<div class="verhoer-block">
+    <button class="verhoer-btn" onclick="startPasswort(this,'5_Verhoer_Victor.mp3','schatten')">Verhör Victor</button>
+    <div class="passwort-container">
+        <input type="password" placeholder="Passwort">
+        <button onclick="checkPasswort(this)">Entsperren</button>
+        <div class="error-msg"></div>
+    </div>
+</div>
+
+<div class="verhoer-block">
+    <button class="verhoer-btn" onclick="startPasswort(this,'6_Verhoer_Damian.mp3','schluessel')">Verhör Damian</button>
+    <div class="passwort-container">
+        <input type="password" placeholder="Passwort">
+        <button onclick="checkPasswort(this)">Entsperren</button>
+        <div class="error-msg"></div>
+    </div>
+</div>
+
+<div class="verhoer-block">
+    <button class="verhoer-btn" onclick="startPasswort(this,'7_Verhoer_Olivia.mp3','garten')">Verhör Olivia</button>
+    <div class="passwort-container">
+        <input type="password" placeholder="Passwort">
+        <button onclick="checkPasswort(this)">Entsperren</button>
+        <div class="error-msg"></div>
+    </div>
+</div>
+
+<div class="verhoer-block">
+    <button class="verhoer-btn" onclick="startPasswort(this,'8_Verhoer_Frederick.mp3','vertrag')">Verhör Frederick</button>
+    <div class="passwort-container">
+        <input type="password" placeholder="Passwort">
+        <button onclick="checkPasswort(this)">Entsperren</button>
+        <div class="error-msg"></div>
+    </div>
+</div>
+
+<div class="verhoer-block">
+    <button class="verhoer-btn" onclick="startPasswort(this,'9_Verhoer_Alfred.mp3','uhrwerk')">Verhör Alfred</button>
+    <div class="passwort-container">
+        <input type="password" placeholder="Passwort">
+        <button onclick="checkPasswort(this)">Entsperren</button>
+        <div class="error-msg"></div>
+    </div>
 </div>
 
 <!-- Audioplayer -->
@@ -138,27 +201,43 @@ audio {
 </div>
 
 <script>
+let aktivePasswortContainer = null;
 let aktuelleDatei = "";
 let aktuellesPasswort = "";
 
-function startPasswort(datei, passwort) {
+function startPasswort(button, datei, passwort) {
+    // alle offenen Passwort-Container schließen
+    document.querySelectorAll('.passwort-container').forEach(pc => pc.style.display = 'none');
+
+    // aktuellen Container öffnen
+    const container = button.nextElementSibling;
+    container.style.display = 'block';
+
+    // speichern für checkPasswort
+    aktivePasswortContainer = container;
     aktuelleDatei = datei;
     aktuellesPasswort = passwort;
-    document.getElementById("passwortInput").value = "";
-    document.getElementById("errorMsg").innerText = "";
-    document.getElementById("passwortContainer").style.display = "block";
+
+    // Input leeren & Fehlermeldung zurücksetzen
+    const input = container.querySelector('input');
+    input.value = '';
+    container.querySelector('.error-msg').innerText = '';
+    input.focus();
 }
 
-function checkPasswort() {
-    const eingabe = document.getElementById("passwortInput").value;
+function checkPasswort(btn) {
+    const container = btn.parentElement;
+    const eingabe = container.querySelector('input').value;
+    const error = container.querySelector('.error-msg');
+
     if(eingabe === aktuellesPasswort) {
-        document.getElementById("audiobox").style.display = "block";
-        const player = document.getElementById("player");
+        document.getElementById('audiobox').style.display = 'block';
+        const player = document.getElementById('player');
         player.src = aktuelleDatei;
         player.play();
-        document.getElementById("passwortContainer").style.display = "none";
+        container.style.display = 'none';
     } else {
-        document.getElementById("errorMsg").innerText = "❌ Falsches Passwort. Zugriff verweigert.";
+        error.innerText = "❌ Falsches Passwort. Zugriff verweigert.";
     }
 }
 </script>
