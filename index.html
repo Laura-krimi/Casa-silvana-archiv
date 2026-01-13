@@ -58,7 +58,7 @@ h2 {
 
 .passwort-container {
     display: none;
-    margin-top: 8px;
+    margin-top: 12px; /* Abstand zum Button */
     padding: 15px;
     border: 2px solid #d4af37;
     border-radius: 10px;
@@ -101,13 +101,8 @@ h2 {
     margin-bottom: 6px;
 }
 
-#audiobox {
-    display: none;
-    margin-top: 25px;
-}
-
-audio {
-    width: 100%;
+.audio-player {
+    margin-top: 12px; /* Abstand zum Button */
 }
 </style>
 </head>
@@ -117,7 +112,7 @@ audio {
 <div id="container">
 <h2>◆ Casa Silvana – Archiv der Verhöre ◆</h2>
 
-<!-- Beatrice -->
+<!-- Verhör-Blöcke mit Passwort & Audio direkt darunter -->
 <div class="verhoer-block">
     <button class="verhoer-btn" onclick="startPasswort(this,'1_Verhoer_Beatrice.mp3','rose','Eine bekannte Rote Blume')">Verhör Beatrice</button>
     <div class="passwort-container">
@@ -125,11 +120,13 @@ audio {
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
-        <br> <!-- Leerzeile für Abstand -->
+        <!-- Audio direkt in der Passwort-Box -->
+        <div class="audio-player">
+            <audio controls></audio>
+        </div>
     </div>
 </div>
 
-<!-- Charlotte -->
 <div class="verhoer-block">
     <button class="verhoer-btn" onclick="startPasswort(this,'2_Verhoer_Charlotte.mp3','perle','')">Verhör Charlotte</button>
     <div class="passwort-container">
@@ -137,11 +134,12 @@ audio {
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
-        <br>
+        <div class="audio-player">
+            <audio controls></audio>
+        </div>
     </div>
 </div>
 
-<!-- Victoria -->
 <div class="verhoer-block">
     <button class="verhoer-btn" onclick="startPasswort(this,'3_Verhoer_Victoria.mp3','spiegel','')">Verhör Victoria</button>
     <div class="passwort-container">
@@ -149,11 +147,12 @@ audio {
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
-        <br>
+        <div class="audio-player">
+            <audio controls></audio>
+        </div>
     </div>
 </div>
 
-<!-- Charles -->
 <div class="verhoer-block">
     <button class="verhoer-btn" onclick="startPasswort(this,'4_Verhoer_Charles.mp3','erbe','')">Verhör Charles</button>
     <div class="passwort-container">
@@ -161,11 +160,12 @@ audio {
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
-        <br>
+        <div class="audio-player">
+            <audio controls></audio>
+        </div>
     </div>
 </div>
 
-<!-- Victor -->
 <div class="verhoer-block">
     <button class="verhoer-btn" onclick="startPasswort(this,'5_Verhoer_Victor.mp3','schatten','')">Verhör Victor</button>
     <div class="passwort-container">
@@ -173,11 +173,12 @@ audio {
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
-        <br>
+        <div class="audio-player">
+            <audio controls></audio>
+        </div>
     </div>
 </div>
 
-<!-- Damian -->
 <div class="verhoer-block">
     <button class="verhoer-btn" onclick="startPasswort(this,'6_Verhoer_Damian.mp3','schluessel','')">Verhör Damian</button>
     <div class="passwort-container">
@@ -185,11 +186,12 @@ audio {
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
-        <br>
+        <div class="audio-player">
+            <audio controls></audio>
+        </div>
     </div>
 </div>
 
-<!-- Olivia -->
 <div class="verhoer-block">
     <button class="verhoer-btn" onclick="startPasswort(this,'7_Verhoer_Olivia.mp3','garten','')">Verhör Olivia</button>
     <div class="passwort-container">
@@ -197,11 +199,12 @@ audio {
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
-        <br>
+        <div class="audio-player">
+            <audio controls></audio>
+        </div>
     </div>
 </div>
 
-<!-- Frederick -->
 <div class="verhoer-block">
     <button class="verhoer-btn" onclick="startPasswort(this,'8_Verhoer_Frederick.mp3','vertrag','')">Verhör Frederick</button>
     <div class="passwort-container">
@@ -209,11 +212,12 @@ audio {
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
-        <br>
+        <div class="audio-player">
+            <audio controls></audio>
+        </div>
     </div>
 </div>
 
-<!-- Alfred -->
 <div class="verhoer-block">
     <button class="verhoer-btn" onclick="startPasswort(this,'9_Verhoer_Alfred.mp3','uhrwerk','')">Verhör Alfred</button>
     <div class="passwort-container">
@@ -221,22 +225,15 @@ audio {
         <input type="password" placeholder="Passwort">
         <button onclick="checkPasswort(this)">Entsperren</button>
         <div class="error-msg"></div>
-        <br>
+        <div class="audio-player">
+            <audio controls></audio>
+        </div>
     </div>
 </div>
 
-<!-- Audioplayer -->
-<div id="audiobox">
-    <audio id="player" controls></audio>
-</div>
-
-</div>
-
 <script>
-let aktivePasswortContainer = null;
 let aktuelleDatei = "";
 let aktuellesPasswort = "";
-let aktuellerTipp = "";
 
 function startPasswort(button, datei, passwort, tipp) {
     // alle offenen Passwort-Container schließen
@@ -246,11 +243,14 @@ function startPasswort(button, datei, passwort, tipp) {
     const container = button.nextElementSibling;
     container.style.display = 'block';
 
-    // Tipp anzeigen
+    // Tipp setzen
     container.querySelector('.tipp-msg').innerText = tipp;
 
+    // Audio zurücksetzen
+    const player = container.querySelector('audio');
+    player.src = '';
+
     // speichern für checkPasswort
-    aktivePasswortContainer = container;
     aktuelleDatei = datei;
     aktuellesPasswort = passwort;
 
@@ -265,13 +265,11 @@ function checkPasswort(btn) {
     const container = btn.parentElement;
     const eingabe = container.querySelector('input').value;
     const error = container.querySelector('.error-msg');
+    const player = container.querySelector('audio');
 
     if(eingabe === aktuellesPasswort) {
-        document.getElementById('audiobox').style.display = 'block';
-        const player = document.getElementById('player');
         player.src = aktuelleDatei;
         player.play();
-        container.style.display = 'none';
     } else {
         error.innerText = "❌ Falsches Passwort. Zugriff verweigert.";
     }
