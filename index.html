@@ -55,9 +55,49 @@ h2 {
     transform: translateY(-2px);
 }
 
+/* Passwort-Box */
+#passwortContainer {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    background: #fde4ec;
+}
+
+#passwortContainer input[type="password"] {
+    width: calc(100% - 120px);
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #d4af37;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+#passwortContainer button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background: #e29ab5;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#passwortContainer button:hover {
+    background: #d77fa2;
+}
+
+#errorMsg {
+    color: #c33;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
 #audiobox {
     display: none;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 audio {
@@ -72,15 +112,23 @@ audio {
 <h2>◆ Casa Silvana – Archiv der Verhöre ◆</h2>
 
 <!-- Buttons für Verhöre -->
-<button class="verhoer-btn" onclick="zugang('1_Verhoer_Beatrice.mp3','rose')">Verhör Beatrice</button>
-<button class="verhoer-btn" onclick="zugang('2_Verhoer_Charlotte.mp3','perle')">Verhör Charlotte</button>
-<button class="verhoer-btn" onclick="zugang('3_Verhoer_Victoria.mp3','spiegel')">Verhör Victoria</button>
-<button class="verhoer-btn" onclick="zugang('4_Verhoer_Charles.mp3','erbe')">Verhör Charles</button>
-<button class="verhoer-btn" onclick="zugang('5_Verhoer_Victor.mp3','schatten')">Verhör Victor</button>
-<button class="verhoer-btn" onclick="zugang('6_Verhoer_Damian.mp3','schluessel')">Verhör Damian</button>
-<button class="verhoer-btn" onclick="zugang('7_Verhoer_Olivia.mp3','garten')">Verhör Olivia</button>
-<button class="verhoer-btn" onclick="zugang('8_Verhoer_Frederick.mp3','vertrag')">Verhör Frederick</button>
-<button class="verhoer-btn" onclick="zugang('9_Verhoer_Alfred.mp3','uhrwerk')">Verhör Alfred</button>
+<button class="verhoer-btn" onclick="startPasswort('1_Verhoer_Beatrice.mp3','rose')">Verhör Beatrice</button>
+<button class="verhoer-btn" onclick="startPasswort('2_Verhoer_Charlotte.mp3','perle')">Verhör Charlotte</button>
+<button class="verhoer-btn" onclick="startPasswort('3_Verhoer_Victoria.mp3','spiegel')">Verhör Victoria</button>
+<button class="verhoer-btn" onclick="startPasswort('4_Verhoer_Charles.mp3','erbe')">Verhör Charles</button>
+<button class="verhoer-btn" onclick="startPasswort('5_Verhoer_Victor.mp3','schatten')">Verhör Victor</button>
+<button class="verhoer-btn" onclick="startPasswort('6_Verhoer_Damian.mp3','schluessel')">Verhör Damian</button>
+<button class="verhoer-btn" onclick="startPasswort('7_Verhoer_Olivia.mp3','garten')">Verhör Olivia</button>
+<button class="verhoer-btn" onclick="startPasswort('8_Verhoer_Frederick.mp3','vertrag')">Verhör Frederick</button>
+<button class="verhoer-btn" onclick="startPasswort('9_Verhoer_Alfred.mp3','uhrwerk')">Verhör Alfred</button>
+
+<!-- Passwort-Eingabe -->
+<div id="passwortContainer">
+    <label>🔑 Passwort eingeben:</label><br><br>
+    <input type="password" id="passwortInput" placeholder="Passwort">
+    <button onclick="checkPasswort()">Entsperren</button>
+    <div id="errorMsg"></div>
+</div>
 
 <!-- Audioplayer -->
 <div id="audiobox">
@@ -90,19 +138,27 @@ audio {
 </div>
 
 <script>
-// Funktion für Passwort-Abfrage
-function zugang(datei, richtigesPasswort) {
-    const eingabe = prompt("🔑 Bitte Passwort für dieses Verhör eingeben:");
+let aktuelleDatei = "";
+let aktuellesPasswort = "";
 
-    if (eingabe === null) return; // Abbrechen
+function startPasswort(datei, passwort) {
+    aktuelleDatei = datei;
+    aktuellesPasswort = passwort;
+    document.getElementById("passwortInput").value = "";
+    document.getElementById("errorMsg").innerText = "";
+    document.getElementById("passwortContainer").style.display = "block";
+}
 
-    if (eingabe === richtigesPasswort) {
+function checkPasswort() {
+    const eingabe = document.getElementById("passwortInput").value;
+    if(eingabe === aktuellesPasswort) {
         document.getElementById("audiobox").style.display = "block";
         const player = document.getElementById("player");
-        player.src = datei;
+        player.src = aktuelleDatei;
         player.play();
+        document.getElementById("passwortContainer").style.display = "none";
     } else {
-        alert("❌ Falsches Passwort. Zugriff verweigert.");
+        document.getElementById("errorMsg").innerText = "❌ Falsches Passwort. Zugriff verweigert.";
     }
 }
 </script>
