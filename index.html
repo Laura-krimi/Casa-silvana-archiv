@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Casa Silvana – Archiv der Verhöre</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    background: linear-gradient(135deg, #fde4ec, #fff6f0);
+    font-family: 'Playfair Display', serif;
+    color: #b49a57;
+    padding: 40px;
+}
+
+#container {
+    max-width: 760px;
+    margin: auto;
+    background: #fff1f6;
+    border: 2px solid #d4af37;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #d4af37;
+    padding-bottom: 10px;
+}
+
+h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    border-left: 5px solid #d4af37;
+    padding-left: 12px;
+}
+
+.verhoer-btn {
+    width: 100%;
+    text-align: left;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    font-size: 17px;
+    background: linear-gradient(135deg, #e8a7c1, #f3c1d4);
+    border: 1px solid #d4af37;
+    border-radius: 8px;
+    color: #4a2b35;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.verhoer-btn::before {
+    content: "🔒";
+    margin-right: 10px;
+}
+
+.verhoer-btn:hover {
+    background: linear-gradient(135deg, #f5c5da, #eaa0bf);
+    box-shadow: 0 0 12px rgba(212,175,55,0.6);
+    transform: translateY(-2px);
+}
+
+#pdfviewer {
+    display: none;
+    margin-top: 30px;
+}
+
+iframe {
+    width: 100%;
+    height: 520px;
+    border: 1px solid #d4af37;
+    border-radius: 6px;
+    background: #fff;
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+<h2>◆ Casa Silvana – Archiv der Verhöre ◆</h2>
+
+<h3>Verschlüsselte Verhöre</h3>
+
+<button class="verhoer-btn" onclick="openPDF('1_Verhör_Beatrice.pdf')">Verhör Beatrice</button>
+<button class="verhoer-btn" onclick="openPDF('2_Verhör_Charlotte.pdf')">Verhör Charlotte</button>
+<button class="verhoer-btn" onclick="openPDF('3_Verhör_Victoria.pdf')">Verhör Victoria</button>
+<button class="verhoer-btn" onclick="openPDF('4_Verhör_Charles.pdf')">Verhör Charles</button>
+<button class="verhoer-btn" onclick="openPDF('5_Verhör_Victor.pdf')">Verhör Victor</button>
+<button class="verhoer-btn" onclick="openPDF('6_Verhör_Damian.pdf')">Verhör Damian</button>
+<button class="verhoer-btn" onclick="openPDF('7_Verhör_Olivia.pdf')">Verhör Olivia</button>
+<button class="verhoer-btn" onclick="openPDF('8_Verhör_Frederick.pdf')">Verhör Frederick</button>
+<button class="verhoer-btn" onclick="openPDF('9_Verhör_Alfred.pdf')">Verhör Alfred</button>
+
+<div id="pdfviewer">
+    <iframe id="frame"></iframe>
+</div>
+
+</div>
+
+<script>
+function openPDF(file) {
+    document.getElementById("pdfviewer").style.display = "block";
+    document.getElementById("frame").src = file;
+}
+</script>
+
+</body>
+</html>
