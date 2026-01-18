@@ -59,7 +59,7 @@
 
   .passwort-box{
     display:none;
-    margin-top:12px;              /* Abstand unter dem Button */
+    margin-top:12px;
     padding:18px 18px 16px 18px;
     border:2px solid #d4af37;
     border-radius:12px;
@@ -71,7 +71,7 @@
     font-style: italic;
     line-height:1.35;
     margin-bottom:10px;
-    white-space: pre-wrap;         /* Zeilenumbrüche aus dem Text behalten */
+    white-space: pre-wrap;
   }
 
   .row{
@@ -115,31 +115,20 @@
     margin-top:14px;
   }
 
-  audio{
-    width:100%;
-  }
-
-  .small-note{
-    margin-top:10px;
-    color:#6f4d24;
-    font-size: 14px;
-    opacity: 0.9;
-  }
+  audio{ width:100%; }
 </style>
 </head>
 
 <body>
 <div id="container">
   <h2>◆ Casa Silvana – Archiv der Verhöre ◆</h2>
-
   <div id="list"></div>
 </div>
 
 <script>
 /**
- * WICHTIG:
- * - Dateinamen exakt wie in deinem Repo (Screenshot).
- * - Audio wird erst nach korrektem Passwort in die Box eingesetzt (geladen).
+ * Hinweis: Passwörter sind hier im Code hinterlegt (für Spieler nicht sichtbar).
+ * Für echte Sicherheit wäre ein Server nötig – für ein Krimispiel passt das so.
  */
 const VERHOERE = [
   {
@@ -147,18 +136,14 @@ const VERHOERE = [
     file: "1_Verhoer_Beatrice.mp3.ogg",
     mime: "audio/ogg",
     password: "Rose",
-    hint:
-`Gdv Sdvvzruw odxwhw Urvh
-Passwort: Rose`
+    hint: `Gdv Sdvvzruw odxwhw Urvh`
   },
   {
     label: "Verhör Charlotte",
     file: "2_Verhoer_Charlotte.mp3.ogg",
     mime: "audio/ogg",
     password: "Marie",
-    hint:
-`Wie heißt Charlottes Tochter?
-Passwort: Marie`
+    hint: `Wie heißt Charlottes Tochter?`
   },
   {
     label: "Verhör Victoria",
@@ -169,17 +154,14 @@ Passwort: Marie`
 `A + A * A=182
 A * B=91
 B+C = 12
-A*C-B=?
-Passwort: 58`
+A*C-B=?`
   },
   {
     label: "Verhör Charles",
     file: "4_Verhoer_Charles.mp3.ogg",
     mime: "audio/ogg",
     password: "Geheimnis",
-    hint:
-`Wer mich hat, der will mich teilen. Wer mich aber teilt hat mich nicht mehr. Ich bin ein?
-Passwort: Geheimnis`
+    hint: `Wer mich hat, der will mich teilen. Wer mich aber teilt hat mich nicht mehr. Ich bin ein?`
   },
   {
     label: "Verhör Victor",
@@ -189,26 +171,21 @@ Passwort: Geheimnis`
     hint:
 `Ich spreche ohne Mund und verbinde dich mit anderen.
 Was bin ich?
-Falls ihr nicht drauf kommt ein Tipp: der Gegenstand befindet sich in Victors Zimmer auf der Kommode neben der Tür.
-Passwort: Telefon`
+Tipp: der Gegenstand befindet sich in Victors Zimmer auf der Kommode neben der Tür.`
   },
   {
     label: "Verhör Damian",
     file: "6_Verhoer_Damian.mp3.mpeg",
     mime: "audio/mpeg",
     password: "Angst",
-    hint:
-`Das Wort, das ich meine, hat 5 Buchstaben und ist überall verteilt.
-Passwort: Angst`
+    hint: `Das Wort, das ich meine, hat 5 Buchstaben und ist überall verteilt.`
   },
   {
     label: "Verhör Olivia",
     file: "7_Verhoer_Olivia.mp3.ogg",
     mime: "audio/ogg",
     password: "9",
-    hint:
-`Welche Nummer hat Olivias Zimmer?
-Passwort: 9`
+    hint: `Welche Nummer hat Olivias Zimmer?`
   },
   {
     label: "Verhör Frederick",
@@ -221,8 +198,8 @@ Passwort: 9`
 736 -Keine der Zahlen ist korrekt
 124 -Zwei Zahlen sind korrekt, aber beide falsch platziert
 926 -Eine Zahl ist korrekt, aber falsch platziert
-Passwort: 251
-Welche drei Zahlen in welcher Reihenfolge sind, gesucht?`
+
+Welche drei Zahlen in welcher Reihenfolge sind gesucht?`
   },
   {
     label: "Verhör Alfred",
@@ -232,8 +209,7 @@ Welche drei Zahlen in welcher Reihenfolge sind, gesucht?`
     hint:
 `Wie viele Gartengeräte sind in der Garage?
 Welche Stunde zeigt die Uhr im Flur der 1 Etage?
-Wie viele Schuhpaare sind in Charlottes Zimmer?
-Passwort: 5210`
+Wie viele Schuhpaare sind in Charlottes Zimmer?`
   }
 ];
 
@@ -244,9 +220,7 @@ function closeAllBoxes() {
 }
 
 function stopAllAudios() {
-  document.querySelectorAll("audio").forEach(a => {
-    try { a.pause(); } catch(e) {}
-  });
+  document.querySelectorAll("audio").forEach(a => { try { a.pause(); } catch(e) {} });
 }
 
 function normalize(s){
@@ -276,13 +250,11 @@ function render(){
         <div class="error" id="err_${idx}"></div>
 
         <div class="audio-wrap" id="audio_${idx}"></div>
-        <div class="small-note">Hinweis: Die Audio-Datei wird erst nach korrektem Passwort geladen.</div>
       </div>
     `;
 
     listEl.appendChild(block);
 
-    // Button: Box unter dem geklickten Button öffnen
     block.querySelector(`#btn_${idx}`).addEventListener("click", () => {
       stopAllAudios();
       closeAllBoxes();
@@ -297,7 +269,6 @@ function render(){
       block.querySelector(`#pw_${idx}`).focus();
     });
 
-    // Entsperren
     block.querySelector(`#unlock_${idx}`).addEventListener("click", () => {
       const input = block.querySelector(`#pw_${idx}`).value;
       const ok = normalize(input) === normalize(v.password);
@@ -313,7 +284,7 @@ function render(){
 
       err.textContent = "";
 
-      // Audio ERST JETZT laden (eingesetzt wird erst nach Passwort)
+      // Audio erst JETZT laden
       audioWrap.innerHTML = `
         <audio controls>
           <source src="${v.file}" type="${v.mime}">
@@ -321,18 +292,13 @@ function render(){
         </audio>
       `;
 
-      // optional: automatisch starten
+      // Optional: direkt starten
       const a = audioWrap.querySelector("audio");
-      if (a) {
-        a.play().catch(() => {});
-      }
+      if (a) a.play().catch(() => {});
     });
 
-    // Enter im Passwortfeld = Entsperren
     block.querySelector(`#pw_${idx}`).addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        block.querySelector(`#unlock_${idx}`).click();
-      }
+      if (e.key === "Enter") block.querySelector(`#unlock_${idx}`).click();
     });
   });
 }
