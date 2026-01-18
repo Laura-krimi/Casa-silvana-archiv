@@ -1,108 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-<meta charset="utf-8">
-<title>Casa Silvana – Archiv der Verhöre</title>
+<meta charset="UTF-8">
+<title>Casa Silvana – Verhörzugang</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
-    background: linear-gradient(135deg, #fde4ec, #fff6f0);
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at top, #f6e8ef, #2c1a22);
     font-family: 'Playfair Display', serif;
-    color: #b49a57;
-    padding: 40px;
+    color: #f5d9a6;
 }
 
 #container {
-    max-width: 760px;
-    margin: auto;
-    background: #fff1f6;
-    border: 2px solid #d4af37;
-    border-radius: 16px;
+    max-width: 800px;
+    margin: 60px auto;
+    background: #3a1f2b;
+    border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    border: 2px solid #d4af37;
 }
 
-h2 {
+h1 {
     text-align: center;
-    font-size: 30px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #d4af37;
-    padding-bottom: 10px;
+    margin-bottom: 40px;
 }
 
 .verhoer-btn {
     width: 100%;
-    padding: 14px 18px;
-    margin-bottom: 8px;
-    font-size: 17px;
-    background: linear-gradient(135deg, #e8a7c1, #f3c1d4);
-    border: 1px solid #d4af37;
-    border-radius: 8px;
-    color: #4a2b35;
+    padding: 14px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #d4af37, #f5d9a6);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
-    text-align: left;
-    position: relative;
-}
-
-.verhoer-btn::before {
-    content: "🔒 ";
+    color: #3a1f2b;
 }
 
 .verhoer-btn:hover {
-    box-shadow: 0 0 12px rgba(212,175,55,0.6);
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, #f5d9a6, #d4af37);
 }
 
-.passwort-container {
+.passwort-box {
     display: none;
-    margin-top: 12px; /* Abstand zum Button */
-    padding: 15px;
-    border: 2px solid #d4af37;
-    border-radius: 10px;
-    background: #fde4ec;
-}
-
-.passwort-container input[type="password"] {
-    width: calc(100% - 120px);
-    padding: 10px;
-    font-size: 16px;
+    margin-top: 15px;
+    padding: 20px;
+    background: #2a131c;
+    border-radius: 12px;
     border: 1px solid #d4af37;
-    border-radius: 6px;
-    margin-right: 10px;
 }
 
-.passwort-container button {
-    padding: 10px 15px;
-    font-size: 16px;
-    background: #e29ab5;
+.passwort-box input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
     border: none;
-    border-radius: 6px;
-    color: #fff;
+    margin-bottom: 12px;
+}
+
+.passwort-box button {
+    width: 100%;
+    padding: 10px;
+    background: #d4af37;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.passwort-container button:hover {
-    background: #d77fa2;
-}
-
-.error-msg {
-    color: #c33;
-    margin-top: 8px;
-    font-weight: bold;
-}
-
-.tipp-msg {
-    color: #4a2b35;
+.hinweis {
     font-style: italic;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
+    color: #f3c9d6;
 }
 
-.audio-player {
-    margin-top: 12px; /* Abstand zum Button */
+.error {
+    color: #ff6b6b;
+    margin-top: 10px;
+}
+
+audio {
+    width: 100%;
+    margin-top: 15px;
 }
 </style>
 </head>
@@ -110,168 +93,61 @@ h2 {
 <body>
 
 <div id="container">
-<h2>◆ Casa Silvana – Archiv der Verhöre ◆</h2>
+<h1>Casa Silvana<br>Verhör-Zugang</h1>
 
-<!-- Verhör-Blöcke mit Passwort & Audio direkt darunter -->
-<div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'1_Verhoer_Beatrice.mp3','rose','Eine bekannte Rote Blume')">Verhör Beatrice</button>
-    <div class="passwort-container">
-        <div class="tipp-msg"></div>
-        <input type="password" placeholder="Passwort">
-        <button onclick="checkPasswort(this)">Entsperren</button>
-        <div class="error-msg"></div>
-        <!-- Audio direkt in der Passwort-Box -->
-        <div class="audio-player">
-            <audio controls></audio>
-        </div>
-    </div>
-</div>
-
-<div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'2_Verhoer_Charlotte.mp3','perle','')">Verhör Charlotte</button>
-    <div class="passwort-container">
-        <div class="tipp-msg"></div>
-        <input type="password" placeholder="Passwort">
-        <button onclick="checkPasswort(this)">Entsperren</button>
-        <div class="error-msg"></div>
-        <div class="audio-player">
-            <audio controls></audio>
-        </div>
-    </div>
-</div>
-
-<div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'3_Verhoer_Victoria.mp3','spiegel','')">Verhör Victoria</button>
-    <div class="passwort-container">
-        <div class="tipp-msg"></div>
-        <input type="password" placeholder="Passwort">
-        <button onclick="checkPasswort(this)">Entsperren</button>
-        <div class="error-msg"></div>
-        <div class="audio-player">
-            <audio controls></audio>
-        </div>
-    </div>
-</div>
-
-<div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'4_Verhoer_Charles.mp3','erbe','')">Verhör Charles</button>
-    <div class="passwort-container">
-        <div class="tipp-msg"></div>
-        <input type="password" placeholder="Passwort">
-        <button onclick="checkPasswort(this)">Entsperren</button>
-        <div class="error-msg"></div>
-        <div class="audio-player">
-            <audio controls></audio>
-        </div>
-    </div>
-</div>
-
-<div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'5_Verhoer_Victor.mp3','schatten','')">Verhör Victor</button>
-    <div class="passwort-container">
-        <div class="tipp-msg"></div>
-        <input type="password" placeholder="Passwort">
-        <button onclick="checkPasswort(this)">Entsperren</button>
-        <div class="error-msg"></div>
-        <div class="audio-player">
-            <audio controls></audio>
-        </div>
-    </div>
-</div>
-
-<div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'6_Verhoer_Damian.mp3','schluessel','')">Verhör Damian</button>
-    <div class="passwort-container">
-        <div class="tipp-msg"></div>
-        <input type="password" placeholder="Passwort">
-        <button onclick="checkPasswort(this)">Entsperren</button>
-        <div class="error-msg"></div>
-        <div class="audio-player">
-            <audio controls></audio>
-        </div>
-    </div>
-</div>
-
-<div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'7_Verhoer_Olivia.mp3','garten','')">Verhör Olivia</button>
-    <div class="passwort-container">
-        <div class="tipp-msg"></div>
-        <input type="password" placeholder="Passwort">
-        <button onclick="checkPasswort(this)">Entsperren</button>
-        <div class="error-msg"></div>
-        <div class="audio-player">
-            <audio controls></audio>
-        </div>
-    </div>
-</div>
-
-<div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'8_Verhoer_Frederick.mp3','vertrag','')">Verhör Frederick</button>
-    <div class="passwort-container">
-        <div class="tipp-msg"></div>
-        <input type="password" placeholder="Passwort">
-        <button onclick="checkPasswort(this)">Entsperren</button>
-        <div class="error-msg"></div>
-        <div class="audio-player">
-            <audio controls></audio>
-        </div>
-    </div>
-</div>
-
-<div class="verhoer-block">
-    <button class="verhoer-btn" onclick="startPasswort(this,'9_Verhoer_Alfred.mp3','uhrwerk','')">Verhör Alfred</button>
-    <div class="passwort-container">
-        <div class="tipp-msg"></div>
-        <input type="password" placeholder="Passwort">
-        <button onclick="checkPasswort(this)">Entsperren</button>
-        <div class="error-msg"></div>
-        <div class="audio-player">
-            <audio controls></audio>
-        </div>
-    </div>
+<div id="verhoere"></div>
 </div>
 
 <script>
-let aktuelleDatei = "";
-let aktuellesPasswort = "";
+const verhoere = [
+ {name:"1_Verhör_Beatrice", passwort:"rose", datei:"1_Verhoer_Beatrice.mp3.ogg", type:"audio/ogg", tipp:"Eine bekannte rote Blume"},
+ {name:"2_Verhör_Charlotte", passwort:"code2", datei:"2_Verhoer_Charlotte.mp3.ogg", type:"audio/ogg"},
+ {name:"3_Verhör_Victoria", passwort:"code3", datei:"3_Verhoer_Victoria.mp3.ogg", type:"audio/ogg"},
+ {name:"4_Verhör_Charles", passwort:"code4", datei:"4_Verhoer_Charles.mp3.ogg", type:"audio/ogg"},
+ {name:"5_Verhör_Victor", passwort:"code5", datei:"5_Verhoer_Victor.mp3.ogg", type:"audio/ogg"},
+ {name:"6_Verhör_Damian", passwort:"code6", datei:"6_Verhoer_Damian.mp3.mpeg", type:"audio/mpeg"},
+ {name:"7_Verhör_Olivia", passwort:"code7", datei:"7_Verhoer_Olivia.mp3.ogg", type:"audio/ogg"},
+ {name:"8_Verhör_Frederick", passwort:"code8", datei:"8_Verhoer_Frederick.mp3.ogg", type:"audio/ogg"},
+ {name:"9_Verhör_Alfred", passwort:"code9", datei:"9_Verhoer_Alfred.mp3.ogg", type:"audio/ogg"}
+];
 
-function startPasswort(button, datei, passwort, tipp) {
-    // alle offenen Passwort-Container schließen
-    document.querySelectorAll('.passwort-container').forEach(pc => pc.style.display = 'none');
+const container = document.getElementById("verhoere");
 
-    // aktuellen Container öffnen
-    const container = button.nextElementSibling;
-    container.style.display = 'block';
+verhoere.forEach((v, i) => {
+    const block = document.createElement("div");
 
-    // Tipp setzen
-    container.querySelector('.tipp-msg').innerText = tipp;
+    block.innerHTML = `
+        <button class="verhoer-btn" onclick="toggle(${i})">${v.name}</button>
 
-    // Audio zurücksetzen
-    const player = container.querySelector('audio');
-    player.src = '';
+        <div class="passwort-box" id="box${i}">
+            ${v.tipp ? `<div class="hinweis">${v.tipp}</div>` : ""}
+            <input type="password" id="pw${i}" placeholder="Passwort eingeben">
+            <button onclick="unlock(${i})">Entsperren</button>
+            <div class="error" id="err${i}"></div>
+            <div id="audio${i}"></div>
+        </div>
+    `;
+    container.appendChild(block);
+});
 
-    // speichern für checkPasswort
-    aktuelleDatei = datei;
-    aktuellesPasswort = passwort;
-
-    // Input leeren & Fehlermeldung zurücksetzen
-    const input = container.querySelector('input');
-    input.value = '';
-    container.querySelector('.error-msg').innerText = '';
-    input.focus();
+function toggle(i) {
+    document.querySelectorAll(".passwort-box").forEach(b => b.style.display="none");
+    document.getElementById("box"+i).style.display = "block";
 }
 
-function checkPasswort(btn) {
-    const container = btn.parentElement;
-    const eingabe = container.querySelector('input').value;
-    const error = container.querySelector('.error-msg');
-    const player = container.querySelector('audio');
+function unlock(i) {
+    const pw = document.getElementById("pw"+i).value;
+    const v = verhoere[i];
 
-    if(eingabe === aktuellesPasswort) {
-        player.src = aktuelleDatei;
-        player.play();
+    if (pw === v.passwort) {
+        document.getElementById("audio"+i).innerHTML = `
+            <audio controls>
+                <source src="${v.datei}" type="${v.type}">
+            </audio>
+        `;
+        document.getElementById("err"+i).innerText = "";
     } else {
-        error.innerText = "❌ Falsches Passwort. Zugriff verweigert.";
+        document.getElementById("err"+i).innerText = "❌ Falsches Passwort";
     }
 }
 </script>
