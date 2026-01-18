@@ -1,155 +1,343 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Casa Silvana – Verhörzugang</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Casa Silvana – Verschlüsselte Verhöre</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    background: radial-gradient(circle at top, #f6e8ef, #2c1a22);
+  body{
+    background: linear-gradient(135deg,#fde4ec,#fff6f0);
     font-family: 'Playfair Display', serif;
-    color: #f5d9a6;
-}
+    color:#7a5a2b;
+    padding:40px;
+    margin:0;
+  }
 
-#container {
-    max-width: 800px;
-    margin: 60px auto;
-    background: #3a1f2b;
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 0 40px rgba(0,0,0,0.6);
-    border: 2px solid #d4af37;
-}
+  #container{
+    max-width: 820px;
+    margin: 0 auto;
+    background:#fff1f6;
+    border:2px solid #d4af37;
+    border-radius:16px;
+    padding:40px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  }
 
-h1 {
-    text-align: center;
-    margin-bottom: 40px;
-}
+  h2{
+    text-align:center;
+    font-size:30px;
+    margin:0 0 28px 0;
+    border-bottom:1px solid #d4af37;
+    padding-bottom:12px;
+    color:#b49a57;
+    letter-spacing:0.5px;
+  }
 
-.verhoer-btn {
-    width: 100%;
-    padding: 14px;
-    margin-top: 15px;
-    background: linear-gradient(135deg, #d4af37, #f5d9a6);
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    color: #3a1f2b;
-}
+  .verhoer-block{ margin-bottom: 14px; }
 
-.verhoer-btn:hover {
-    background: linear-gradient(135deg, #f5d9a6, #d4af37);
-}
+  .verhoer-btn{
+    width:100%;
+    text-align:left;
+    padding:14px 18px;
+    font-size:17px;
+    background: linear-gradient(135deg,#e8a7c1,#f3c1d4);
+    border:1px solid #d4af37;
+    border-radius:8px;
+    color:#4a2b35;
+    cursor:pointer;
+    transition: all .25s ease;
+  }
+  .verhoer-btn::before{ content:"🔒 "; }
+  .verhoer-btn:hover{
+    background: linear-gradient(135deg,#f5c5da,#eaa0bf);
+    box-shadow:0 0 12px rgba(212,175,55,0.55);
+    transform: translateY(-2px);
+  }
 
-.passwort-box {
-    display: none;
-    margin-top: 15px;
-    padding: 20px;
-    background: #2a131c;
-    border-radius: 12px;
-    border: 1px solid #d4af37;
-}
+  .passwort-box{
+    display:none;
+    margin-top:12px;              /* Abstand unter dem Button */
+    padding:18px 18px 16px 18px;
+    border:2px solid #d4af37;
+    border-radius:12px;
+    background:#fde4ec;
+  }
 
-.passwort-box input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    margin-bottom: 12px;
-}
-
-.passwort-box button {
-    width: 100%;
-    padding: 10px;
-    background: #d4af37;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.hinweis {
+  .hint{
+    color:#4a2b35;
     font-style: italic;
-    margin-bottom: 10px;
-    color: #f3c9d6;
-}
+    line-height:1.35;
+    margin-bottom:10px;
+    white-space: pre-wrap;         /* Zeilenumbrüche aus dem Text behalten */
+  }
 
-.error {
-    color: #ff6b6b;
-    margin-top: 10px;
-}
+  .row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
 
-audio {
-    width: 100%;
-    margin-top: 15px;
-}
+  input[type="password"]{
+    flex:1;
+    min-width: 220px;
+    padding:10px 12px;
+    font-size:16px;
+    border-radius:8px;
+    border:1px solid #d4af37;
+    background:#fff7fb;
+    color:#3b2330;
+    outline:none;
+  }
+
+  .unlock-btn{
+    padding:10px 14px;
+    font-size:16px;
+    background:#e29ab5;
+    border:none;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+    transition: .2s;
+  }
+  .unlock-btn:hover{ background:#d77fa2; }
+
+  .error{
+    margin-top:10px;
+    font-weight:600;
+    color:#b0162a;
+  }
+
+  .audio-wrap{
+    margin-top:14px;
+  }
+
+  audio{
+    width:100%;
+  }
+
+  .small-note{
+    margin-top:10px;
+    color:#6f4d24;
+    font-size: 14px;
+    opacity: 0.9;
+  }
 </style>
 </head>
 
 <body>
-
 <div id="container">
-<h1>Casa Silvana<br>Verhör-Zugang</h1>
+  <h2>◆ Casa Silvana – Archiv der Verhöre ◆</h2>
 
-<div id="verhoere"></div>
+  <div id="list"></div>
 </div>
 
 <script>
-const verhoere = [
- {name:"1_Verhör_Beatrice", passwort:"rose", datei:"1_Verhoer_Beatrice.mp3.ogg", type:"audio/ogg", tipp:"Eine bekannte rote Blume"},
- {name:"2_Verhör_Charlotte", passwort:"code2", datei:"2_Verhoer_Charlotte.mp3.ogg", type:"audio/ogg"},
- {name:"3_Verhör_Victoria", passwort:"code3", datei:"3_Verhoer_Victoria.mp3.ogg", type:"audio/ogg"},
- {name:"4_Verhör_Charles", passwort:"code4", datei:"4_Verhoer_Charles.mp3.ogg", type:"audio/ogg"},
- {name:"5_Verhör_Victor", passwort:"code5", datei:"5_Verhoer_Victor.mp3.ogg", type:"audio/ogg"},
- {name:"6_Verhör_Damian", passwort:"code6", datei:"6_Verhoer_Damian.mp3.mpeg", type:"audio/mpeg"},
- {name:"7_Verhör_Olivia", passwort:"code7", datei:"7_Verhoer_Olivia.mp3.ogg", type:"audio/ogg"},
- {name:"8_Verhör_Frederick", passwort:"code8", datei:"8_Verhoer_Frederick.mp3.ogg", type:"audio/ogg"},
- {name:"9_Verhör_Alfred", passwort:"code9", datei:"9_Verhoer_Alfred.mp3.ogg", type:"audio/ogg"}
+/**
+ * WICHTIG:
+ * - Dateinamen exakt wie in deinem Repo (Screenshot).
+ * - Audio wird erst nach korrektem Passwort in die Box eingesetzt (geladen).
+ */
+const VERHOERE = [
+  {
+    label: "Verhör Beatrice",
+    file: "1_Verhoer_Beatrice.mp3.ogg",
+    mime: "audio/ogg",
+    password: "Rose",
+    hint:
+`Gdv Sdvvzruw odxwhw Urvh
+Passwort: Rose`
+  },
+  {
+    label: "Verhör Charlotte",
+    file: "2_Verhoer_Charlotte.mp3.ogg",
+    mime: "audio/ogg",
+    password: "Marie",
+    hint:
+`Wie heißt Charlottes Tochter?
+Passwort: Marie`
+  },
+  {
+    label: "Verhör Victoria",
+    file: "3_Verhoer_Victoria.mp3.ogg",
+    mime: "audio/ogg",
+    password: "58",
+    hint:
+`A + A * A=182
+A * B=91
+B+C = 12
+A*C-B=?
+Passwort: 58`
+  },
+  {
+    label: "Verhör Charles",
+    file: "4_Verhoer_Charles.mp3.ogg",
+    mime: "audio/ogg",
+    password: "Geheimnis",
+    hint:
+`Wer mich hat, der will mich teilen. Wer mich aber teilt hat mich nicht mehr. Ich bin ein?
+Passwort: Geheimnis`
+  },
+  {
+    label: "Verhör Victor",
+    file: "5_Verhoer_Victor.mp3.ogg",
+    mime: "audio/ogg",
+    password: "Telefon",
+    hint:
+`Ich spreche ohne Mund und verbinde dich mit anderen.
+Was bin ich?
+Falls ihr nicht drauf kommt ein Tipp: der Gegenstand befindet sich in Victors Zimmer auf der Kommode neben der Tür.
+Passwort: Telefon`
+  },
+  {
+    label: "Verhör Damian",
+    file: "6_Verhoer_Damian.mp3.mpeg",
+    mime: "audio/mpeg",
+    password: "Angst",
+    hint:
+`Das Wort, das ich meine, hat 5 Buchstaben und ist überall verteilt.
+Passwort: Angst`
+  },
+  {
+    label: "Verhör Olivia",
+    file: "7_Verhoer_Olivia.mp3.ogg",
+    mime: "audio/ogg",
+    password: "9",
+    hint:
+`Welche Nummer hat Olivias Zimmer?
+Passwort: 9`
+  },
+  {
+    label: "Verhör Frederick",
+    file: "8_Verhoer_Frederick.mp3.ogg",
+    mime: "audio/ogg",
+    password: "251",
+    hint:
+`461 -Eine Zahl ist korrekt und richtig platziert
+475 -Eine Zahl ist korrekt, aber falsch platziert
+736 -Keine der Zahlen ist korrekt
+124 -Zwei Zahlen sind korrekt, aber beide falsch platziert
+926 -Eine Zahl ist korrekt, aber falsch platziert
+Passwort: 251
+Welche drei Zahlen in welcher Reihenfolge sind, gesucht?`
+  },
+  {
+    label: "Verhör Alfred",
+    file: "9_Verhoer_Alfred.mp3.ogg",
+    mime: "audio/ogg",
+    password: "5210",
+    hint:
+`Wie viele Gartengeräte sind in der Garage?
+Welche Stunde zeigt die Uhr im Flur der 1 Etage?
+Wie viele Schuhpaare sind in Charlottes Zimmer?
+Passwort: 5210`
+  }
 ];
 
-const container = document.getElementById("verhoere");
+const listEl = document.getElementById("list");
 
-verhoere.forEach((v, i) => {
+function closeAllBoxes() {
+  document.querySelectorAll(".passwort-box").forEach(b => b.style.display = "none");
+}
+
+function stopAllAudios() {
+  document.querySelectorAll("audio").forEach(a => {
+    try { a.pause(); } catch(e) {}
+  });
+}
+
+function normalize(s){
+  return (s ?? "").toString().trim().toLowerCase();
+}
+
+function render(){
+  listEl.innerHTML = "";
+
+  VERHOERE.forEach((v, idx) => {
     const block = document.createElement("div");
+    block.className = "verhoer-block";
 
     block.innerHTML = `
-        <button class="verhoer-btn" onclick="toggle(${i})">${v.name}</button>
+      <button class="verhoer-btn" type="button" id="btn_${idx}">
+        ${v.label}
+      </button>
 
-        <div class="passwort-box" id="box${i}">
-            ${v.tipp ? `<div class="hinweis">${v.tipp}</div>` : ""}
-            <input type="password" id="pw${i}" placeholder="Passwort eingeben">
-            <button onclick="unlock(${i})">Entsperren</button>
-            <div class="error" id="err${i}"></div>
-            <div id="audio${i}"></div>
+      <div class="passwort-box" id="box_${idx}">
+        <div class="hint">${v.hint}</div>
+
+        <div class="row">
+          <input type="password" id="pw_${idx}" placeholder="Passwort eingeben" autocomplete="off" />
+          <button class="unlock-btn" type="button" id="unlock_${idx}">Entsperren</button>
         </div>
+
+        <div class="error" id="err_${idx}"></div>
+
+        <div class="audio-wrap" id="audio_${idx}"></div>
+        <div class="small-note">Hinweis: Die Audio-Datei wird erst nach korrektem Passwort geladen.</div>
+      </div>
     `;
-    container.appendChild(block);
-});
 
-function toggle(i) {
-    document.querySelectorAll(".passwort-box").forEach(b => b.style.display="none");
-    document.getElementById("box"+i).style.display = "block";
+    listEl.appendChild(block);
+
+    // Button: Box unter dem geklickten Button öffnen
+    block.querySelector(`#btn_${idx}`).addEventListener("click", () => {
+      stopAllAudios();
+      closeAllBoxes();
+
+      const box = block.querySelector(`#box_${idx}`);
+      box.style.display = "block";
+
+      // Reset bei jedem Öffnen
+      block.querySelector(`#err_${idx}`).textContent = "";
+      block.querySelector(`#pw_${idx}`).value = "";
+      block.querySelector(`#audio_${idx}`).innerHTML = "";
+      block.querySelector(`#pw_${idx}`).focus();
+    });
+
+    // Entsperren
+    block.querySelector(`#unlock_${idx}`).addEventListener("click", () => {
+      const input = block.querySelector(`#pw_${idx}`).value;
+      const ok = normalize(input) === normalize(v.password);
+
+      const err = block.querySelector(`#err_${idx}`);
+      const audioWrap = block.querySelector(`#audio_${idx}`);
+
+      if (!ok) {
+        err.textContent = "❌ Falsches Passwort. Zugriff verweigert.";
+        audioWrap.innerHTML = "";
+        return;
+      }
+
+      err.textContent = "";
+
+      // Audio ERST JETZT laden (eingesetzt wird erst nach Passwort)
+      audioWrap.innerHTML = `
+        <audio controls>
+          <source src="${v.file}" type="${v.mime}">
+          Dein Browser unterstützt dieses Audioformat nicht.
+        </audio>
+      `;
+
+      // optional: automatisch starten
+      const a = audioWrap.querySelector("audio");
+      if (a) {
+        a.play().catch(() => {});
+      }
+    });
+
+    // Enter im Passwortfeld = Entsperren
+    block.querySelector(`#pw_${idx}`).addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        block.querySelector(`#unlock_${idx}`).click();
+      }
+    });
+  });
 }
 
-function unlock(i) {
-    const pw = document.getElementById("pw"+i).value;
-    const v = verhoere[i];
-
-    if (pw === v.passwort) {
-        document.getElementById("audio"+i).innerHTML = `
-            <audio controls>
-                <source src="${v.datei}" type="${v.type}">
-            </audio>
-        `;
-        document.getElementById("err"+i).innerText = "";
-    } else {
-        document.getElementById("err"+i).innerText = "❌ Falsches Passwort";
-    }
-}
+render();
 </script>
 
 </body>
